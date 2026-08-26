@@ -3,206 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KSP Mobile - Farrukhabad</title>
-    <!-- Tailwind CSS for Styling -->
+    <title>KSP Mobile - Khimsepur, Farrukhabad</title>
+    
+    <!-- PWA App Icon Links -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3616/3616856.png">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3616/3616856.png">
+    <meta name="theme-color" content="#0f172a">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         .active-tab { border-bottom: 3px solid #f97316; color: #f97316; font-weight: bold; }
     </style>
 </head>
-<body class="bg-gray-100 font-sans pb-20">
+<body class="bg-gray-100 font-sans pb-24">
 
-    <!-- Header / Navbar -->
+    <!-- Header -->
     <div class="bg-slate-900 text-white p-4 sticky top-0 z-50 shadow-md flex justify-between items-center">
-        <div>
-            <h1 class="text-xl font-bold text-orange-500">KSP MOBILE</h1>
-            <p class="text-xs text-gray-300">खिमसेपुर, फर्रूखाबाद (UP-76)</p>
+        <div class="flex items-center gap-3">
+            <img src="https://cdn-icons-png.flaticon.com/512/3616/3616856.png" class="w-9 h-9 rounded-lg bg-white p-1" alt="KSP Logo">
+            <div>
+                <h1 class="text-lg font-bold text-orange-500 leading-tight">KSP MOBILE</h1>
+                <p class="text-[11px] text-gray-300"><i class="fa-solid fa-location-dot text-red-500"></i> खिमसेपुर, फर्रूखाबाद (UP-76)</p>
+            </div>
         </div>
-        <a href="https://wa.me/919919787169" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2">
-            <i class="fa-brands fa-whatsapp text-lg"></i> संपर्क करें
+        <a href="https://wa.me/919919787169" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow">
+            <i class="fa-brands fa-whatsapp text-sm"></i> संपर्क करें
         </a>
     </div>
 
     <!-- Banner -->
-    <div class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white p-6 text-center">
-        <h2 class="text-2xl font-bold mb-1">मोबाइल रिपेयरिंग एवं रीचार्ज केंद्र</h2>
-        <p class="text-sm text-gray-200">सबसे तेज़ सर्विस • ओरिजिनल पार्ट्स • सही रेट</p>
+    <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 text-white p-4 text-center">
+        <h2 class="text-lg font-bold">सर्वश्रेष्ठ मोबाइल रिपेयरिंग व रीचार्ज केंद्र</h2>
+        <p class="text-xs text-gray-200 mt-0.5">10 वर्षों का अनुभव • ओरिजिनल पार्ट्स • तुरंत सर्विस</p>
     </div>
 
     <!-- Navigation Tabs -->
-    <div class="flex justify-around bg-white border-b shadow-sm text-sm sticky top-[60px] z-40">
-        <button id="tab-recharge" onclick="switchTab('recharge')" class="py-3 px-4 active-tab flex items-center gap-1">
-            <i class="fa-solid fa-bolt"></i> रीचार्ज प्लान
+    <div class="flex justify-around bg-white border-b shadow-sm text-xs sticky top-[61px] z-40 font-semibold">
+        <button id="tab-recharge" onclick="switchTab('recharge')" class="py-3 px-2 active-tab flex items-center gap-1">
+            <i class="fa-solid fa-bolt text-orange-500"></i> रीचार्ज प्लान
         </button>
-        <button id="tab-repair" onclick="switchTab('repair')" class="py-3 px-4 text-gray-600 flex items-center gap-1">
-            <i class="fa-solid fa-wrench"></i> रिपेयरिंग रेट
+        <button id="tab-repair" onclick="switchTab('repair')" class="py-3 px-2 text-gray-600 flex items-center gap-1">
+            <i class="fa-solid fa-wrench text-blue-500"></i> रिपेयरिंग रेट
         </button>
-        <button id="tab-accessories" onclick="switchTab('accessories')" class="py-3 px-4 text-gray-600 flex items-center gap-1">
-            <i class="fa-solid fa-plug"></i> सामान / एक्सेसरीज़
+        <button id="tab-accessories" onclick="switchTab('accessories')" class="py-3 px-2 text-gray-600 flex items-center gap-1">
+            <i class="fa-solid fa-plug text-purple-500"></i> सामान / एक्सेसरीज़
         </button>
     </div>
 
-    <div class="max-w-md mx-auto p-4">
+    <div class="max-w-md mx-auto p-3 space-y-4">
 
         <!-- 1. RECHARGE SECTION -->
         <div id="recharge-section" class="space-y-4">
-            <h3 class="text-md font-bold text-gray-700">पॉपुलर रीचार्ज प्लान्स</h3>
-
-            <!-- Airtel -->
-            <div class="bg-white p-4 rounded-xl shadow-md flex items-center justify-between border-l-4 border-red-600">
-                <div class="flex items-center gap-3">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Airtel_logo.svg/512px-Airtel_logo.svg.png" class="w-10 h-10 object-contain" alt="Airtel">
-                    <div>
-                        <h4 class="font-bold text-gray-800">Airtel ₹349</h4>
-                        <p class="text-xs text-gray-500">1.5GB/दिन • 28 दिन • अनलिमिटेड कॉल</p>
+            
+            <!-- Airtel Plans -->
+            <div class="bg-white p-3 rounded-xl shadow border-l-4 border-red-600">
+                <div class="flex items-center gap-2 mb-2 pb-2 border-b">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Airtel_logo-01.png" class="h-6 object-contain" alt="Airtel">
+                    <h3 class="font-bold text-gray-800 text-sm">Airtel रीचार्ज प्लान्स</h3>
+                </div>
+                <div class="space-y-2 text-xs">
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹199</span> - 28 दिन <p class="text-[10px] text-gray-500">2GB कुल डेटा + अनलिमिटेड कॉल</p></div>
+                        <a href="https://wa.me/919919787169?text=Airtel%20199%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹349</span> - 28 दिन <p class="text-[10px] text-gray-500">1.5GB/दिन + 5G अनलिमिटेड</p></div>
+                        <a href="https://wa.me/919919787169?text=Airtel%20349%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹579</span> - 56 दिन <p class="text-[10px] text-gray-500">1.5GB/दिन + 5G अनलिमिटेड</p></div>
+                        <a href="https://wa.me/919919787169?text=Airtel%20579%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹859</span> - 84 दिन <p class="text-[10px] text-gray-500">1.5GB/दिन + 5G अनलिमिटेड</p></div>
+                        <a href="https://wa.me/919919787169?text=Airtel%20859%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
                     </div>
                 </div>
-                <a href="https://wa.me/919919787169?text=मुझे%20Airtel%20349%20का%20रीचार्ज%20कराना%20है" class="bg-green-500 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">रीचार्ज कराएं</a>
             </div>
 
-            <!-- Jio -->
-            <div class="bg-white p-4 rounded-xl shadow-md flex items-center justify-between border-l-4 border-blue-600">
-                <div class="flex items-center gap-3">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Jio_Logo.svg" class="w-10 h-10 object-contain" alt="Jio">
-                    <div>
-                        <h4 class="font-bold text-gray-800">Jio ₹299</h4>
-                        <p class="text-xs text-gray-500">1.5GB/दिन • 28 दिन • अनलिमिटेड कॉल</p>
+            <!-- Jio Plans -->
+            <div class="bg-white p-3 rounded-xl shadow border-l-4 border-blue-600">
+                <div class="flex items-center gap-2 mb-2 pb-2 border-b">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Reliance_Jio_Logo.svg" class="h-6 object-contain" alt="Jio">
+                    <h3 class="font-bold text-gray-800 text-sm">Jio रीचार्ज प्लान्स</h3>
+                </div>
+                <div class="space-y-2 text-xs">
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹189</span> - 28 दिन <p class="text-[10px] text-gray-500">2GB कुल डेटा + अनलिमिटेड कॉल</p></div>
+                        <a href="https://wa.me/919919787169?text=Jio%20189%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹299</span> - 28 दिन <p class="text-[10px] text-gray-500">1.5GB/दिन + 5G अनलिमिटेड</p></div>
+                        <a href="https://wa.me/919919787169?text=Jio%20299%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹349</span> - 28 दिन <p class="text-[10px] text-gray-500">2GB/दिन + True 5G</p></div>
+                        <a href="https://wa.me/919919787169?text=Jio%20349%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹899</span> - 90 दिन <p class="text-[10px] text-gray-500">2GB/दिन + True 5G</p></div>
+                        <a href="https://wa.me/919919787169?text=Jio%20899%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
                     </div>
                 </div>
-                <a href="https://wa.me/919919787169?text=मुझे%20Jio%20299%20का%20रीचार्ज%20कराना%20है" class="bg-green-500 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">रीचार्ज कराएं</a>
             </div>
 
-            <!-- Vi -->
-            <div class="bg-white p-4 rounded-xl shadow-md flex items-center justify-between border-l-4 border-yellow-500">
-                <div class="flex items-center gap-3">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Logo_of_Vodafone_Idea.png/512px-Logo_of_Vodafone_Idea.png" class="w-10 h-10 object-contain" alt="Vi">
-                    <div>
-                        <h4 class="font-bold text-gray-800">Vi ₹349</h4>
-                        <p class="text-xs text-gray-500">1.5GB/दिन • 28 दिन • नाइट फ्री डेटा</p>
+            <!-- Vi Plans -->
+            <div class="bg-white p-3 rounded-xl shadow border-l-4 border-yellow-500">
+                <div class="flex items-center gap-2 mb-2 pb-2 border-b">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Vodafone_Idea_logo.svg" class="h-6 object-contain" alt="Vi">
+                    <h3 class="font-bold text-gray-800 text-sm">Vi रीचार्ज प्लान्स</h3>
+                </div>
+                <div class="space-y-2 text-xs">
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹199</span> - 28 दिन <p class="text-[10px] text-gray-500">2GB डेटा + अनलिमिटेड कॉल</p></div>
+                        <a href="https://wa.me/919919787169?text=Vi%20199%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹349</span> - 28 दिन <p class="text-[10px] text-gray-500">1.5GB/दिन + नाइट फ्री डेटा</p></div>
+                        <a href="https://wa.me/919919787169?text=Vi%20349%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
                     </div>
                 </div>
-                <a href="https://wa.me/919919787169?text=मुझे%20Vi%20349%20का%20रीचार्ज%20कराना%20है" class="bg-green-500 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">रीचार्ज कराएं</a>
             </div>
 
-            <!-- BSNL -->
-            <div class="bg-white p-4 rounded-xl shadow-md flex items-center justify-between border-l-4 border-green-600">
-                <div class="flex items-center gap-3">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/BSNL_logo_with_slogan.svg/512px-BSNL_logo_with_slogan.svg.png" class="w-10 h-10 object-contain" alt="BSNL">
-                    <div>
-                        <h4 class="font-bold text-gray-800">BSNL ₹199</h4>
-                        <p class="text-xs text-gray-500">2GB/दिन • 30 दिन • अनलिमिटेड कॉल</p>
+            <!-- BSNL Plans -->
+            <div class="bg-white p-3 rounded-xl shadow border-l-4 border-green-600">
+                <div class="flex items-center gap-2 mb-2 pb-2 border-b">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/BSNL_logo.svg" class="h-6 object-contain" alt="BSNL">
+                    <h3 class="font-bold text-gray-800 text-sm">BSNL रीचार्ज प्लान्स</h3>
+                </div>
+                <div class="space-y-2 text-xs">
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹199</span> - 30 दिन <p class="text-[10px] text-gray-500">2GB/दिन + अनलिमिटेड कॉल</p></div>
+                        <a href="https://wa.me/919919787169?text=BSNL%20199%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded border">
+                        <div><span class="font-bold text-gray-900">₹397</span> - 150 दिन <p class="text-[10px] text-gray-500">वैलिडिटी प्लान + 2GB/दिन (30 दिन)</p></div>
+                        <a href="https://wa.me/919919787169?text=BSNL%20397%20Recharge" class="bg-green-600 text-white px-2.5 py-1 rounded font-semibold">रीचार्ज कराएं</a>
                     </div>
                 </div>
-                <a href="https://wa.me/919919787169?text=मुझे%20BSNL%20199%20का%20रीचार्ज%20कराना%20है" class="bg-green-500 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">रीचार्ज कराएं</a>
             </div>
+
         </div>
 
         <!-- 2. REPAIR SECTION -->
-        <div id="repair-section" class="space-y-4 hidden">
-            <h3 class="text-md font-bold text-gray-700">रिपेयरिंग रेट लिस्ट</h3>
+        <div id="repair-section" class="space-y-3 hidden">
+            <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider">मोबाइल रिपेयरिंग रेट कार्ड</h3>
 
-            <!-- Folder -->
-            <div class="bg-white p-4 rounded-xl shadow-md flex items-center justify-between">
+            <div class="bg-white p-3 rounded-xl shadow flex items-center justify-between border">
                 <div class="flex items-center gap-3">
-                    <img src="https://cdn-icons-png.flaticon.com/512/644/644458.png" class="w-10 h-10 object-contain" alt="Folder">
+                    <i class="fa-solid fa-mobile-screen text-2xl text-blue-600"></i>
                     <div>
-                        <h4 class="font-bold text-gray-800">Folder / Display चेंज</h4>
-                        <p class="text-xs text-gray-500">ओरिजिनल क्वालिटी कॉम्बो</p>
-                        <span class="text-sm font-semibold text-orange-600">₹800 - ₹2500</span>
+                        <h4 class="font-bold text-gray-800 text-sm">स्मार्टफोन फोल्डर (Display)</h4>
+                        <p class="text-[11px] text-gray-500">IPS / AMOLED / TFT कॉम्बो</p>
+                        <span class="text-xs font-bold text-orange-600">₹800 - ₹3,500</span>
                     </div>
                 </div>
-                <a href="https://wa.me/919919787169?text=मुझे%20फोल्डर%20बदलवाना%20है" class="bg-slate-800 text-white px-3 py-1.5 rounded-lg text-xs">रेट पूछें</a>
+                <a href="https://wa.me/919919787169?text=स्मार्टफोन%20फोल्डर%20का%20रेट%20बताएं" class="bg-slate-800 text-white px-3 py-1.5 rounded text-xs font-semibold">रेट पूछें</a>
             </div>
 
-            <!-- Touch Glass -->
-            <div class="bg-white p-4 rounded-xl shadow-md flex items-center justify-between">
+            <div class="bg-white p-3 rounded-xl shadow flex items-center justify-between border">
                 <div class="flex items-center gap-3">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2586/2586488.png" class="w-10 h-10 object-contain" alt="Touch">
+                    <i class="fa-solid fa-keyboard text-2xl text-gray-600"></i>
                     <div>
-                        <h4 class="font-bold text-gray-800">Touch Glass Change</h4>
-                        <p class="text-xs text-gray-500">टूटा हुआ ग्लास बदलें</p>
-                        <span class="text-sm font-semibold text-orange-600">₹400 - ₹900</span>
+                        <h4 class="font-bold text-gray-800 text-sm">कीपैड फोन डिस्प्ले</h4>
+                        <p class="text-[11px] text-gray-500">Samsung, China, Jio, Lava</p>
+                        <span class="text-xs font-bold text-orange-600">₹150 - ₹350</span>
                     </div>
                 </div>
-                <a href="https://wa.me/919919787169?text=मुझे%20टच%20ग्लास%20बदलवाना%20है" class="bg-slate-800 text-white px-3 py-1.5 rounded-lg text-xs">रेट पूछें</a>
+                <a href="https://wa.me/919919787169?text=कीपैड%20डिस्प्ले%20रेट" class="bg-slate-800 text-white px-3 py-1.5 rounded text-xs font-semibold">रेट पूछें</a>
             </div>
 
-            <!-- Battery -->
-            <div class="bg-white p-4 rounded-xl shadow-md flex items-center justify-between">
+            <div class="bg-white p-3 rounded-xl shadow flex items-center justify-between border">
                 <div class="flex items-center gap-3">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3103/3103460.png" class="w-10 h-10 object-contain" alt="Battery">
+                    <i class="fa-solid fa-wand-magic-sparkles text-2xl text-purple-600"></i>
                     <div>
-                        <h4 class="font-bold text-gray-800">Battery Replacement</h4>
-                        <p class="text-xs text-gray-500">वारंटी के साथ नई बैटरी</p>
-                        <span class="text-sm font-semibold text-orange-600">₹350 - ₹1200</span>
+                        <h4 class="font-bold text-gray-800 text-sm">टूटा हुआ टच ग्लास (OCA)</h4>
+                        <p class="text-[11px] text-gray-500">ओरिजिनल स्क्रीन बचाकर ग्लास बदलें</p>
+                        <span class="text-xs font-bold text-orange-600">₹400 - ₹1,200</span>
                     </div>
                 </div>
-                <a href="https://wa.me/919919787169?text=मुझे%20बैटरी%20बदलवानी%20है" class="bg-slate-800 text-white px-3 py-1.5 rounded-lg text-xs">रेट पूछें</a>
+                <a href="https://wa.me/919919787169?text=टच%20ग्लास%20चेंज%20रेट" class="bg-slate-800 text-white px-3 py-1.5 rounded text-xs font-semibold">रेट पूछें</a>
             </div>
 
-            <!-- CC Board -->
-            <div class="bg-white p-4 rounded-xl shadow-md flex items-center justify-between">
+            <div class="bg-white p-3 rounded-xl shadow flex items-center justify-between border">
                 <div class="flex items-center gap-3">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2983/2983803.png" class="w-10 h-10 object-contain" alt="Charging">
+                    <i class="fa-solid fa-battery-full text-2xl text-green-600"></i>
                     <div>
-                        <h4 class="font-bold text-gray-800">Charging CC Board</h4>
-                        <p class="text-xs text-gray-500">फास्ट चार्जिंग सॉकेट रिपेयर</p>
-                        <span class="text-sm font-semibold text-orange-600">₹150 - ₹400</span>
+                        <h4 class="font-bold text-gray-800 text-sm">ओरिजिनल बैटरी रिप्लेसमेंट</h4>
+                        <p class="text-[11px] text-gray-500">6 महीने की वारंटी के साथ</p>
+                        <span class="text-xs font-bold text-orange-600">₹350 - ₹1,400</span>
                     </div>
                 </div>
-                <a href="https://wa.me/919919787169?text=मुझे%20चार्जिंग%20सॉकेट%20सही%20कराना%20है" class="bg-slate-800 text-white px-3 py-1.5 rounded-lg text-xs">रेट पूछें</a>
+                <a href="https://wa.me/919919787169?text=बैटरी%20की%20कीमत" class="bg-slate-800 text-white px-3 py-1.5 rounded text-xs font-semibold">रेट पूछें</a>
+            </div>
+
+            <div class="bg-white p-3 rounded-xl shadow flex items-center justify-between border">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-plug-circle-bolt text-2xl text-yellow-600"></i>
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-sm">चार्जिंग CC जैक / बोर्ड</h4>
+                        <p class="text-[11px] text-gray-500">Type-C व V8 सॉकेट रिपेयर</p>
+                        <span class="text-xs font-bold text-orange-600">₹100 - ₹350</span>
+                    </div>
+                </div>
+                <a href="https://wa.me/919919787169?text=चार्जिंग%20सॉकेट%20रिपेयर" class="bg-slate-800 text-white px-3 py-1.5 rounded text-xs font-semibold">रेट पूछें</a>
+            </div>
+
+            <div class="bg-white p-3 rounded-xl shadow flex items-center justify-between border">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-microphone text-2xl text-red-500"></i>
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-sm">माइक / स्पीकर रिपेयर</h4>
+                        <p class="text-[11px] text-gray-500">आवाज़ न आने/धीमी आने का समाधान</p>
+                        <span class="text-xs font-bold text-orange-600">₹100 - ₹300</span>
+                    </div>
+                </div>
+                <a href="https://wa.me/919919787169?text=माइक/स्पीकर%20रिपेयर" class="bg-slate-800 text-white px-3 py-1.5 rounded text-xs font-semibold">रेट पूछें</a>
             </div>
         </div>
 
         <!-- 3. ACCESSORIES SECTION -->
-        <div id="accessories-section" class="space-y-4 hidden">
-            <h3 class="text-md font-bold text-gray-700">दुकान के सामान (Accessories)</h3>
+        <div id="accessories-section" class="space-y-3 hidden">
+            <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider">दुकान का सामान (Accessories)</h3>
 
-            <!-- Charger -->
-            <div class="bg-white p-4 rounded-xl shadow-md flex items-center justify-between">
+            <div class="bg-white p-3 rounded-xl shadow flex items-center justify-between border">
                 <div class="flex items-center gap-3">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1156/1156070.png" class="w-10 h-10 object-contain" alt="Charger">
+                    <i class="fa-solid fa-bolt-lightning text-2xl text-blue-500"></i>
                     <div>
-                        <h4 class="font-bold text-gray-800">Fast Charger (20W/33W)</h4>
-                        <p class="text-xs text-green-600 font-bold">In Stock</p>
-                        <span class="text-sm font-bold text-gray-900">₹350</span>
+                        <h4 class="font-bold text-gray-800 text-sm">फास्ट चार्जर (20W / 33W / 67W)</h4>
+                        <p class="text-[10px] text-green-600 font-semibold">In Stock</p>
+                        <span class="text-xs font-bold text-gray-900">₹250 - ₹650</span>
                     </div>
                 </div>
-                <a href="https://wa.me/919919787169?text=मुझे%20फास्ट%20चार्जर%20चाहिए" class="bg-green-600 text-white px-3 py-1.5 rounded-lg text-xs">ऑर्डर करें</a>
+                <a href="https://wa.me/919919787169?text=चार्जर%20चाहिए" class="bg-green-600 text-white px-3 py-1.5 rounded text-xs font-semibold">ऑर्डर करें</a>
             </div>
 
-            <!-- Cable -->
-            <div class="bg-white p-4 rounded-xl shadow-md flex items-center justify-between">
+            <div class="bg-white p-3 rounded-xl shadow flex items-center justify-between border">
                 <div class="flex items-center gap-3">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3076/3076416.png" class="w-10 h-10 object-contain" alt="Cable">
+                    <i class="fa-solid fa-cable-car text-2xl text-gray-700"></i>
                     <div>
-                        <h4 class="font-bold text-gray-800">Premium Data Cable</h4>
-                        <p class="text-xs text-green-600 font-bold">In Stock</p>
-                        <span class="text-sm font-bold text-gray-900">₹99</span>
+                        <h4 class="font-bold text-gray-800 text-sm">डाटा केबल (Type-C / V8)</h4>
+                        <p class="text-[10px] text-green-600 font-semibold">In Stock</p>
+                        <span class="text-xs font-bold text-gray-900">₹60 - ₹200</span>
                     </div>
                 </div>
-                <a href="https://wa.me/919919787169?text=मुझे%20डेटा%20केबल%20चाहिए" class="bg-green-600 text-white px-3 py-1.5 rounded-lg text-xs">ऑर्डर करें</a>
+                <a href="https://wa.me/919919787169?text=डेटा%20केबल%20चाहिए" class="bg-green-600 text-white px-3 py-1.5 rounded text-xs font-semibold">ऑर्डर करें</a>
             </div>
 
-            <!-- Glass -->
-            <div class="bg-white p-4 rounded-xl shadow-md flex items-center justify-between">
+            <div class="bg-white p-3 rounded-xl shadow flex items-center justify-between border">
                 <div class="flex items-center gap-3">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1865/1865269.png" class="w-10 h-10 object-contain" alt="Glass">
+                    <i class="fa-solid fa-shield-halved text-2xl text-green-600"></i>
                     <div>
-                        <h4 class="font-bold text-gray-800">Tempered Glass (11D)</h4>
-                        <p class="text-xs text-green-600 font-bold">In Stock</p>
-                        <span class="text-sm font-bold text-gray-900">₹99</span>
+                        <h4 class="font-bold text-gray-800 text-sm">11D / UV टेंपर्ड ग्लास</h4>
+                        <p class="text-[10px] text-green-600 font-semibold">In Stock</p>
+                        <span class="text-xs font-bold text-gray-900">₹50 - ₹150</span>
                     </div>
                 </div>
-                <a href="https://wa.me/919919787169?text=मुझे%20टेंपर्ड%20ग्लास%20लगवाना%20है" class="bg-green-600 text-white px-3 py-1.5 rounded-lg text-xs">ऑर्डर करें</a>
+                <a href="https://wa.me/919919787169?text=टेंपर्ड%20ग्लास%20चाहिए" class="bg-green-600 text-white px-3 py-1.5 rounded text-xs font-semibold">ऑर्डर करें</a>
+            </div>
+
+            <div class="bg-white p-3 rounded-xl shadow flex items-center justify-between border">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-headphones-simple text-2xl text-red-500"></i>
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-sm">ब्लूटूथ नेकबैंड / इयरफ़ोन</h4>
+                        <p class="text-[10px] text-green-600 font-semibold">In Stock</p>
+                        <span class="text-xs font-bold text-gray-900">₹350 - ₹850</span>
+                    </div>
+                </div>
+                <a href="https://wa.me/919919787169?text=नेकबैंड/इयरफ़ोन%20ऑर्डर" class="bg-green-600 text-white px-3 py-1.5 rounded text-xs font-semibold">ऑर्डर करें</a>
+            </div>
+
+            <div class="bg-white p-3 rounded-xl shadow flex items-center justify-between border">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-sd-card text-2xl text-amber-600"></i>
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-sm">मेमोरी कार्ड (16GB - 64GB)</h4>
+                        <p class="text-[10px] text-green-600 font-semibold">In Stock</p>
+                        <span class="text-xs font-bold text-gray-900">₹250 - ₹500</span>
+                    </div>
+                </div>
+                <a href="https://wa.me/919919787169?text=मेमोरी%20कार्ड%20ऑर्डर" class="bg-green-600 text-white px-3 py-1.5 rounded text-xs font-semibold">ऑर्डर करें</a>
             </div>
         </div>
 
     </div>
 
-    <!-- Tab Switching Script -->
+    <!-- Tab Switching Logic -->
     <script>
         function switchTab(tab) {
             document.getElementById('recharge-section').classList.add('hidden');
@@ -226,5 +315,4 @@
         }
     </script>
 </body>
-                      </html>
-                      
+</html>
