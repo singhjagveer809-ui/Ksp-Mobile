@@ -1,1357 +1,476 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KSP Mobile - Khimsepur, Farrukhabad</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KSP MOBILE - Repairing & Services</title>
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    body {
+      background-color: #0d1117;
+      color: #ffffff;
+      padding-bottom: 70px;
+    }
 
-<style>
-*{box-sizing:border-box}
-body{
-margin:0;
-background:#f1f5f9;
-font-family:Arial,sans-serif;
-padding-bottom:75px;
-}
-.active-tab{
-border-bottom:3px solid #f97316;
-color:#f97316!important;
-font-weight:800;
-}
+    /* Header & Navbar */
+    .header {
+      background-color: #161b22;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #30363d;
+    }
 
-/* TOP MOVING NOTICE */
-.notice{
-height:42px;
-background:#fff7ed;
-border-bottom:2px solid #f97316;
-overflow:hidden;
-display:flex;
-align-items:center;
-}
-.notice-title{
-background:#dc2626;
-color:#fff;
-height:100%;
-display:flex;
-align-items:center;
-padding:0 10px;
-font-size:11px;
-font-weight:bold;
-z-index:2;
-}
-.marquee{
-overflow:hidden;
-white-space:nowrap;
-flex:1;
-}
-.marquee span{
-display:inline-block;
-padding-left:100%;
-animation:move 22s linear infinite;
-color:#b91c1c;
-font-size:12px;
-font-weight:bold;
-}
-@keyframes move{
-0%{transform:translateX(0)}
-100%{transform:translateX(-100%)}
-}
+    .shop-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-/* LOGOS */
-.logo-box{
-width:62px;
-height:48px;
-background:white;
-border:1px solid #ddd;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-flex-shrink:0;
-}
+    .shop-logo {
+      width: 40px;
+      height: 40px;
+      background: #ffffff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
 
-/* PLAN */
-.plan{
-background:#f8fafc;
-border:1px solid #e5e7eb;
-border-radius:10px;
-padding:10px;
-}
-.price{
-font-size:18px;
-font-weight:800;
-color:#111827;
-}
-.detail{
-font-size:10px;
-color:#64748b;
-line-height:1.5;
-margin-top:3px;
-}
-.request{
-background:#16a34a;
-color:#fff;
-padding:7px 9px;
-border-radius:7px;
-font-size:10px;
-font-weight:bold;
-white-space:nowrap;
-height:max-content;
-}
+    .shop-details h2 {
+      font-size: 16px;
+      color: #f0f6fc;
+    }
 
-/* OFFER */
-.offer{
-background:linear-gradient(135deg,#7f1d1d,#dc2626,#991b1b);
-color:white;
-border-radius:15px;
-padding:15px;
-text-align:center;
-box-shadow:0 5px 15px #0002;
-}
-.offer-badge{
-display:inline-block;
-background:#facc15;
-color:#7f1d1d;
-padding:5px 12px;
-border-radius:20px;
-font-size:11px;
-font-weight:900;
-}
+    .shop-details p {
+      font-size: 11px;
+      color: #8b949e;
+    }
 
-/* SERVICE */
-.service{
-background:white;
-border-radius:12px;
-padding:11px;
-display:flex;
-align-items:center;
-gap:12px;
-box-shadow:0 2px 7px #00000012;
-}
-.service-icon{
-width:48px;
-height:48px;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:21px;
-flex-shrink:0;
-}
-.rate{
-margin-left:auto;
-font-size:14px;
-font-weight:800;
-color:#16a34a;
-white-space:nowrap;
-}
+    .lang-select {
+      background: #21262d;
+      color: #c9d1d9;
+      border: 1px solid #30363d;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
 
-/* ACCESSORY */
-.accessory{
-background:white;
-border-radius:12px;
-padding:12px;
-text-align:center;
-box-shadow:0 2px 7px #00000012;
-}
-.accessory-icon{
-width:50px;
-height:50px;
-border-radius:50%;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:21px;
-}
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      background-color: #161b22;
+      border-bottom: 1px solid #30363d;
+    }
 
-/* BRAND FILTER BUTTONS */
-.brand-btn{
-background: white;
-border: 1px solid #cbd5e1;
-padding: 6px 12px;
-border-radius: 20px;
-font-size: 11px;
-font-weight: bold;
-color: #334155;
-white-space: nowrap;
-cursor: pointer;
-}
-.active-brand{
-background: #2563eb;
-color: white;
-border-color: #2563eb;
-}
+    .tab-btn {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      background: none;
+      border: none;
+      color: #8b949e;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+    }
 
-/* BOTTOM */
-.bottom{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#0f172a;
-color:white;
-z-index:100;
-}
-.bottom-inner{
-max-width:500px;
-margin:auto;
-display:flex;
-justify-content:space-around;
-padding:9px;
-}
-.bottom a{
-color:white;
-text-align:center;
-font-size:11px;
-text-decoration:none;
-}
-.bottom i{
-display:block;
-font-size:19px;
-margin-bottom:2px;
-}
-</style>
+    .tab-btn.active {
+      color: #f78166;
+      border-bottom: 3px solid #f78166;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 12px;
+    }
+
+    /* Series Cards (Old UI Intact) */
+    .brand-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+      color: #000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .brand-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-badge {
+      background: #e1f0ff;
+      color: #0969da;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .brand-name {
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .series-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .series-box {
+      background: #f6f8fa;
+      border: 1px solid #d0d7de;
+      padding: 8px;
+      border-radius: 6px;
+    }
+
+    .series-box span {
+      display: block;
+      font-size: 11px;
+      color: #57606a;
+    }
+
+    .series-box strong {
+      font-size: 13px;
+      color: #1f2328;
+    }
+
+    .section-title {
+      font-size: 14px;
+      color: #8b949e;
+      margin: 16px 0 10px 4px;
+      font-weight: 600;
+    }
+
+    /* New Accordion/Model Repair Categories */
+    .repair-card {
+      background: #ffffff;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .repair-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px;
+      cursor: pointer;
+      background: #ffffff;
+      user-select: none;
+    }
+
+    .repair-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .repair-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .icon-screen { background: #ddf4ff; }
+    .icon-battery { background: #ffebe9; }
+    .icon-jack { background: #f3e8ff; }
+
+    .repair-text h3 {
+      font-size: 15px;
+      color: #1f2328;
+    }
+
+    .repair-text p {
+      font-size: 11px;
+      color: #57606a;
+    }
+
+    .arrow-icon {
+      font-size: 12px;
+      color: #57606a;
+      transition: transform 0.3s;
+    }
+
+    /* Hidden Model List */
+    .model-list {
+      display: none;
+      background: #f6f8fa;
+      border-top: 1px solid #d0d7de;
+      padding: 4px 14px;
+    }
+
+    .model-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px dashed #d0d7de;
+    }
+
+    .model-row:last-child {
+      border-bottom: none;
+    }
+
+    .model-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1f2328;
+    }
+
+    .model-price {
+      font-size: 12px;
+      color: #1a7f37;
+      font-weight: bold;
+    }
+
+    /* WhatsApp Rate Button */
+    .wa-btn {
+      background-color: #25d366;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 18px;
+      font-size: 11px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Bottom Fixed Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #161b22;
+      display: flex;
+      border-top: 1px solid #30363d;
+      padding: 8px 0;
+    }
+
+    .bottom-item {
+      flex: 1;
+      text-align: center;
+      color: #8b949e;
+      text-decoration: none;
+      font-size: 11px;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- MOVING NOTICE -->
-<div class="notice">
-<div class="notice-title">
-<i class="fa-solid fa-triangle-exclamation"></i>&nbsp; जरूरी सूचना
-</div>
-<div class="marquee">
-<span>
-⚠️ Recharge Request करने से पहले अपना मोबाइल नंबर ध्यान से जाँच लें। गलत नंबर पर किया गया Recharge वापस नहीं किया जा सकता। &nbsp;&nbsp;&nbsp;&nbsp;
-⚠️ Recharge Request भेजने के बाद 5 मिनट तक Wait करें।
-</span>
-</div>
-</div>
-
-<!-- HEADER -->
-<header class="bg-slate-900 text-white p-4 sticky top-0 z-50 shadow-md">
-<div class="flex justify-between items-center">
-
-<div class="flex items-center gap-3">
-
-<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center">
-<i class="fa-solid fa-mobile-screen-button text-slate-900 text-xl"></i>
-</div>
-
-<div>
-<h1 class="text-lg font-bold text-orange-500">KSP MOBILE</h1>
-<p class="text-[11px] text-gray-300">
-<i class="fa-solid fa-location-dot text-red-500"></i>
-खिमसेपुर, फर्रूखाबाद (UP-76)
-</p>
-</div>
-
-</div>
-
-<select id="language" onchange="changeLanguage(this.value)"
-class="bg-slate-800 text-white border border-slate-600 rounded-lg text-xs p-2">
-<option value="hi">हिंदी</option>
-<option value="en">English</option>
-</select>
-
-</div>
-</header>
-
-<!-- BANNER -->
-<div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 text-white text-center p-4">
-<h2 class="text-lg font-bold">सर्वश्रेष्ठ मोबाइल रिपेयरिंग व रीचार्ज केंद्र</h2>
-<p class="text-xs mt-1">
-10 वर्षों का अनुभव • ओरिजिनल पार्ट्स • तुरंत सर्विस
-</p>
-</div>
-
-<!-- TABS -->
-<div class="flex justify-around bg-white border-b shadow-sm text-xs sticky top-[74px] z-40 font-semibold">
-
-<button id="tab-recharge"
-onclick="switchTab('recharge')"
-class="py-3 px-2 active-tab">
-<i class="fa-solid fa-bolt text-orange-500"></i>
-रीचार्ज प्लान
-</button>
-
-<button id="tab-repair"
-onclick="switchTab('repair')"
-class="py-3 px-2 text-gray-600">
-<i class="fa-solid fa-screwdriver-wrench text-blue-500"></i>
-रिपेयरिंग रेट
-</button>
-
-<button id="tab-accessories"
-onclick="switchTab('accessories')"
-class="py-3 px-2 text-gray-600">
-<i class="fa-solid fa-plug text-purple-500"></i>
-सामान / एक्सेसरीज़
-</button>
-
-</div>
-
-<main class="max-w-md mx-auto p-3">
-
-<!-- ================= RECHARGE ================= -->
-<section id="recharge-section" class="space-y-4">
-
-<!-- BIG OFFER -->
-<div class="offer">
-
-<span class="offer-badge">🔥 BIG OFFER</span>
-
-<h2 class="text-xl font-black mt-2">
-हर Recharge पर 1% Return
-</h2>
-
-<p class="text-xs mt-2 leading-5">
-Recharge Request डालने के बाद 5 मिनट तक Wait करें।<br>
-सफल Recharge के बाद 1% Return मिलेगा।
-</p>
-
-<p class="text-[10px] mt-2">
-⚠️ Return सफल Recharge Request पर लागू होगा।
-</p>
-
-</div>
-
-
-<!-- AIRTEL -->
-<div class="bg-white p-3 rounded-xl shadow border-l-4 border-red-600">
-
-<div class="flex items-center gap-3 mb-3 pb-2 border-b">
-
-<div class="logo-box">
-<svg viewBox="0 0 100 70">
-<text x="7" y="50"
-font-family="Arial"
-font-size="25"
-font-weight="900"
-fill="#e40000">airtel</text>
-<path d="M65 8c15 5 25 18 25 32 0 10-5 19-12 25"
-fill="none"
-stroke="#e40000"
-stroke-width="8"/>
-</svg>
-</div>
-
-<div>
-<h3 class="font-bold text-gray-800 text-sm">Airtel Recharge Plans</h3>
-<p class="text-[10px] text-gray-500">Prepaid • Unlimited • Data</p>
-</div>
-
-</div>
-
-<div class="space-y-2">
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹199</div>
-<div class="text-[11px] font-bold">28 Days</div>
-<div class="detail">
-2GB Total Data • Unlimited Calling • 100 SMS/Day
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Airtel%20%E2%82%B9199%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹349</div>
-<div class="text-[11px] font-bold">28 Days</div>
-<div class="detail">
-1.5GB/Day • Unlimited Calling • 100 SMS/Day • Eligible 5G Data
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Airtel%20%E2%82%B9349%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹409</div>
-<div class="text-[11px] font-bold">28 Days</div>
-<div class="detail">
-2.5GB/Day • Unlimited Calling • 100 SMS/Day • Eligible 5G Data
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Airtel%20%E2%82%B9409%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹449</div>
-<div class="text-[11px] font-bold">28 Days</div>
-<div class="detail">
-3GB/Day • Unlimited Calling • 100 SMS/Day • Eligible 5G Data
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Airtel%20%E2%82%B9449%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹579</div>
-<div class="text-[11px] font-bold">56 Days</div>
-<div class="detail">
-1.5GB/Day • Unlimited Calling • 100 SMS/Day • Eligible 5G Data
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Airtel%20%E2%82%B9579%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹799</div>
-<div class="text-[11px] font-bold">84 Days</div>
-<div class="detail">
-1.5GB/Day • Unlimited Calling • 100 SMS/Day • Eligible 5G Data
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Airtel%20%E2%82%B9799%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-</div>
-</div>
-
-
-<!-- JIO -->
-<div class="bg-white p-3 rounded-xl shadow border-l-4 border-blue-600">
-
-<div class="flex items-center gap-3 mb-3 pb-2 border-b">
-
-<div class="logo-box">
-<svg viewBox="0 0 100 100">
-<circle cx="50" cy="50" r="46" fill="#0a2885"/>
-<text x="50" y="63"
-text-anchor="middle"
-font-family="Arial"
-font-size="35"
-font-weight="900"
-fill="white">Jio</text>
-</svg>
-</div>
-
-<div>
-<h3 class="font-bold text-gray-800 text-sm">Jio Recharge Plans</h3>
-<p class="text-[10px] text-gray-500">Prepaid • 5G • Data</p>
-</div>
-
-</div>
-
-<div class="space-y-2">
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹189</div>
-<div class="text-[11px] font-bold">28 Days</div>
-<div class="detail">
-2GB Total Data • Unlimited Calling • 300 SMS
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Jio%20%E2%82%B9189%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹249</div>
-<div class="text-[11px] font-bold">28 Days</div>
-<div class="detail">
-1GB/Day • Unlimited Calling • 100 SMS/Day • Eligible 5G
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Jio%20%E2%82%B9249%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹349</div>
-<div class="text-[11px] font-bold">28 Days</div>
-<div class="detail">
-2GB/Day • Unlimited Calling • 100 SMS/Day • Eligible 5G
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Jio%20%E2%82%B9349%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹399</div>
-<div class="text-[11px] font-bold">28 Days</div>
-<div class="detail">
-2.5GB/Day • Unlimited Calling • 100 SMS/Day • Eligible 5G
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Jio%20%E2%82%B9399%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹579</div>
-<div class="text-[11px] font-bold">56 Days</div>
-<div class="detail">
-1.5GB/Day • Unlimited Calling • 100 SMS/Day • Eligible 5G
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Jio%20%E2%82%B9579%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹799</div>
-<div class="text-[11px] font-bold">84 Days</div>
-<div class="detail">
-1.5GB/Day • Unlimited Calling • 100 SMS/Day • Eligible 5G
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Jio%20%E2%82%B9799%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-</div>
-</div>
-
-
-<!-- VI -->
-<div class="bg-white p-3 rounded-xl shadow border-l-4 border-yellow-500">
-
-<div class="flex items-center gap-3 mb-3 pb-2 border-b">
-
-<div class="logo-box">
-<svg viewBox="0 0 100 60">
-<text x="10" y="45"
-font-family="Arial"
-font-size="42"
-font-weight="900"
-fill="#e40000">Vi</text>
-<circle cx="75" cy="15" r="6" fill="#f4b400"/>
-</svg>
-</div>
-
-<div>
-<h3 class="font-bold text-gray-800 text-sm">Vi Recharge Plans</h3>
-<p class="text-[10px] text-gray-500">Vodafone Idea • Prepaid</p>
-</div>
-
-</div>
-
-<div class="space-y-2">
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹199</div>
-<div class="text-[11px] font-bold">28 Days</div>
-<div class="detail">
-Calling Benefits • Data Benefits • SMS Benefits
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Vi%20%E2%82%B9199%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹349</div>
-<div class="text-[11px] font-bold">28 Days</div>
-<div class="detail">
-1.5GB/Day • Unlimited Calling • 100 SMS/Day • Night Data Benefits
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Vi%20%E2%82%B9349%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹449</div>
-<div class="text-[11px] font-bold">28 Days</div>
-<div class="detail">
-3GB/Day • Unlimited Calling • 100 SMS/Day • Eligible 5G Benefits
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Vi%20%E2%82%B9449%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹579</div>
-<div class="text-[11px] font-bold">56 Days</div>
-<div class="detail">
-1.5GB/Day • Unlimited Calling • 100 SMS/Day • Data Benefits
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Vi%20%E2%82%B9579%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹799</div>
-<div class="text-[11px] font-bold">84 Days</div>
-<div class="detail">
-1.5GB/Day • Unlimited Calling • 100 SMS/Day • Data Benefits
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Vi%20%E2%82%B9799%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-</div>
-</div>
-
-
-<!-- BSNL -->
-<div class="bg-white p-3 rounded-xl shadow border-l-4 border-green-600">
-
-<div class="flex items-center gap-3 mb-3 pb-2 border-b">
-
-<div class="logo-box">
-<svg viewBox="0 0 150 70">
-<circle cx="30" cy="35" r="22"
-fill="none"
-stroke="#00843d"
-stroke-width="5"/>
-<path d="M10 28Q30 8 50 28M10 42Q30 62 50 42M13 35H47"
-fill="none"
-stroke="#00843d"
-stroke-width="4"/>
-<text x="58" y="42"
-font-family="Arial"
-font-size="25"
-font-weight="800"
-fill="#00843d">BSNL</text>
-</svg>
-</div>
-
-<div>
-<h3 class="font-bold text-gray-800 text-sm">BSNL Recharge Plans</h3>
-<p class="text-[10px] text-gray-500">BSNL Prepaid</p>
-</div>
-
-</div>
-
-<div class="space-y-2">
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹219</div>
-<div class="text-[11px] font-bold">30 Days</div>
-<div class="detail">
-Data Benefits • Unlimited Calling • SMS Benefits
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20BSNL%20%E2%82%B9219%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹299</div>
-<div class="text-[11px] font-bold">30 Days</div>
-<div class="detail">
-Data Benefits • Unlimited Calling • SMS Benefits
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20BSNL%20%E2%82%B9299%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹347</div>
-<div class="text-[11px] font-bold">54 Days</div>
-<div class="detail">
-Data Benefits • Calling Benefits • SMS Benefits
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20BSNL%20%E2%82%B9347%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹599</div>
-<div class="text-[11px] font-bold">84 Days</div>
-<div class="detail">
-Data Benefits • Unlimited Calling • SMS Benefits
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20BSNL%20%E2%82%B9599%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-<div class="plan flex justify-between gap-2">
-<div>
-<div class="price">₹997</div>
-<div class="text-[11px] font-bold">150 Days</div>
-<div class="detail">
-Long Validity • Calling Benefits • Data Benefits
-</div>
-</div>
-<a class="request"
-href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20BSNL%20%E2%82%B9997%20Recharge%20karwana%20hai.%20Mobile%20Number%3A">
-Recharge Request
-</a>
-</div>
-
-</div>
-</div>
-
-
-<div class="bg-yellow-50 border border-yellow-300 rounded-xl p-3 text-center">
-<i class="fa-solid fa-circle-info text-yellow-600"></i>
-<p class="text-[10px] text-yellow-800 mt-1">
-Recharge plans और prices operator द्वारा कभी भी बदले जा सकते हैं।
-Recharge करने से पहले उपलब्ध plan की पुष्टि करें।
-</p>
-</div>
-
-</section>
-
-
-<!-- ================= REPAIRING ================= -->
-<section id="repair-section" class="space-y-3 hidden">
-
-<div class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white p-4 rounded-xl">
-<i class="fa-solid fa-screwdriver-wrench text-2xl"></i>
-<h2 class="text-lg font-bold mt-1">मोबाइल रिपेयरिंग रेट</h2>
-<p class="text-xs text-blue-100">
-ब्रांड चुने और अपने मॉडल का रेट देखें
-</p>
-</div>
-
-<!-- BRAND FILTER BUTTONS WITH LOGOS -->
-<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
-  <button onclick="filterBrand('all')" class="brand-btn active-brand" id="brand-all">
-    <i class="fa-solid fa-border-all mr-1"></i> सभी (All)
-  </button>
-  <button onclick="filterBrand('mi')" class="brand-btn" id="brand-mi">
-    <i class="fa-solid fa-mobile-screen mr-1 text-orange-500"></i> Xiaomi / Mi
-  </button>
-  <button onclick="filterBrand('vivo')" class="brand-btn" id="brand-vivo">
-    <i class="fa-solid fa-mobile-screen mr-1 text-blue-500"></i> Vivo
-  </button>
-  <button onclick="filterBrand('oppo')" class="brand-btn" id="brand-oppo">
-    <i class="fa-solid fa-mobile-screen mr-1 text-green-500"></i> Oppo
-  </button>
-  <button onclick="filterBrand('realme')" class="brand-btn" id="brand-realme">
-    <i class="fa-solid fa-mobile-screen mr-1 text-yellow-500"></i> Realme
-  </button>
-  <button onclick="filterBrand('samsung')" class="brand-btn" id="brand-samsung">
-    <i class="fa-solid fa-mobile-screen mr-1 text-blue-700"></i> Samsung
-  </button>
-  <button onclick="filterBrand('apple')" class="brand-btn" id="brand-apple">
-    <i class="fa-brands fa-apple mr-1 text-gray-800"></i> iPhone
-  </button>
-</div>
-
-<!-- BRAND DETAILED REPAIR CARDS -->
-<div class="space-y-3">
-
-  <!-- BRAND MODEL ESTIMATE CARDS -->
-  <div class="brand-card mi all bg-white p-3 rounded-xl shadow border-l-4 border-orange-500">
-    <div class="flex items-center justify-between border-b pb-2 mb-2">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold text-xs">Mi</div>
-        <div>
-          <h4 class="font-bold text-gray-800 text-sm">Xiaomi / Redmi / Poco</h4>
-          <p class="text-[10px] text-gray-500">Display, Battery & Glass</p>
-        </div>
-      </div>
-      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Mi%2FRedmi%20phone%20repair%20karwana%20hai." class="request bg-green-600">
-        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
-      </a>
-    </div>
-    <div class="grid grid-cols-2 gap-2 text-xs">
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
-        <strong class="text-gray-800">₹700 - ₹2200</strong>
-      </div>
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">Original Battery</span>
-        <strong class="text-gray-800">₹450 - ₹1200</strong>
+  <!-- Top Header -->
+  <div class="header">
+    <div class="shop-info">
+      <div class="shop-logo">📱</div>
+      <div class="shop-details">
+        <h2>KSP MOBILE</h2>
+        <p>📍 खिमसेपुर, फर्रूखाबाद (UP-76)</p>
       </div>
     </div>
+    <select class="lang-select">
+      <option>English</option>
+      <option>हिंदी</option>
+    </select>
   </div>
 
-  <div class="brand-card vivo all bg-white p-3 rounded-xl shadow border-l-4 border-blue-500">
-    <div class="flex items-center justify-between border-b pb-2 mb-2">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xs">Vi</div>
-        <div>
-          <h4 class="font-bold text-gray-800 text-sm">Vivo Series (Y/V/T)</h4>
-          <p class="text-[10px] text-gray-500">Display, Battery & Glass</p>
-        </div>
-      </div>
-      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Vivo%20phone%20repair%20karwana%20hai." class="request bg-green-600">
-        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
-      </a>
-    </div>
-    <div class="grid grid-cols-2 gap-2 text-xs">
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
-        <strong class="text-gray-800">₹800 - ₹2500</strong>
-      </div>
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">Original Battery</span>
-        <strong class="text-gray-800">₹500 - ₹1300</strong>
-      </div>
-    </div>
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button class="tab-btn">⚡ Recharge</button>
+    <button class="tab-btn active">🛠️ Repairing</button>
+    <button class="tab-btn">🔌 Accessories</button>
   </div>
 
-  <div class="brand-card oppo all bg-white p-3 rounded-xl shadow border-l-4 border-green-500">
-    <div class="flex items-center justify-between border-b pb-2 mb-2">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xs">Op</div>
-        <div>
-          <h4 class="font-bold text-gray-800 text-sm">Oppo Series (A/F/Reno)</h4>
-          <p class="text-[10px] text-gray-500">Display, Battery & Glass</p>
+  <div class="container">
+
+    <!-- Brand Series Cards (Sam, Apple etc. Intact) -->
+    <div class="brand-card">
+      <div class="brand-header">
+        <div class="brand-title">
+          <span class="brand-badge">Sam</span>
+          <span class="brand-name">Samsung (M/F/A/S Series)</span>
+        </div>
+        <a href="https://wa.me/91XXXXXXXXXX?text=Mujhe%20Samsung%20ka%20rate%20puchna%20hai" class="wa-btn" target="_blank">💬 रेट पूछें</a>
+      </div>
+      <div class="series-grid">
+        <div class="series-box">
+          <span>Display/Folder</span>
+          <strong>₹900 - ₹4500+</strong>
+        </div>
+        <div class="series-box">
+          <span>Original Battery</span>
+          <strong>₹550 - ₹1500</strong>
         </div>
       </div>
-      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Oppo%20phone%20repair%20karwana%20hai." class="request bg-green-600">
-        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
-      </a>
     </div>
-    <div class="grid grid-cols-2 gap-2 text-xs">
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
-        <strong class="text-gray-800">₹800 - ₹2400</strong>
-      </div>
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">Original Battery</span>
-        <strong class="text-gray-800">₹500 - ₹1250</strong>
-      </div>
-    </div>
-  </div>
 
-  <div class="brand-card realme all bg-white p-3 rounded-xl shadow border-l-4 border-yellow-500">
-    <div class="flex items-center justify-between border-b pb-2 mb-2">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 font-bold text-xs">R</div>
-        <div>
-          <h4 class="font-bold text-gray-800 text-sm">Realme Series (C/Number/GT)</h4>
-          <p class="text-[10px] text-gray-500">Display, Battery & Glass</p>
+    <!-- Section Title -->
+    <div class="section-title">अन्य कॉमन रिपेयरिंग चार्ज</div>
+
+    <!-- Category 1: Display / Screen Combo -->
+    <div class="repair-card">
+      <div class="repair-header" onclick="toggleMenu('combo-models', this)">
+        <div class="repair-info">
+          <div class="repair-icon icon-screen">📱</div>
+          <div class="repair-text">
+            <h3>Display / Screen Combo</h3>
+            <p>LCD / OLED / AMOLED Replacement</p>
+          </div>
         </div>
+        <span class="arrow-icon">▼</span>
       </div>
-      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Realme%20phone%20repair%20karwana%20hai." class="request bg-green-600">
-        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
-      </a>
-    </div>
-    <div class="grid grid-cols-2 gap-2 text-xs">
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
-        <strong class="text-gray-800">₹750 - ₹2300</strong>
-      </div>
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">Original Battery</span>
-        <strong class="text-gray-800">₹450 - ₹1200</strong>
-      </div>
-    </div>
-  </div>
 
-  <div class="brand-card samsung all bg-white p-3 rounded-xl shadow border-l-4 border-blue-700">
-    <div class="flex items-center justify-between border-b pb-2 mb-2">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-800 font-bold text-xs">Sam</div>
-        <div>
-          <h4 class="font-bold text-gray-800 text-sm">Samsung (M/F/A/S Series)</h4>
-          <p class="text-[10px] text-gray-500">TFT / OLED / AMOLED Display</p>
-        </div>
-      </div>
-      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Samsung%20phone%20repair%20karwana%20hai." class="request bg-green-600">
-        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
-      </a>
-    </div>
-    <div class="grid grid-cols-2 gap-2 text-xs">
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
-        <strong class="text-gray-800">₹900 - ₹4500+</strong>
-      </div>
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">Original Battery</span>
-        <strong class="text-gray-800">₹550 - ₹1500</strong>
-      </div>
-    </div>
-  </div>
-
-  <div class="brand-card apple all bg-white p-3 rounded-xl shadow border-l-4 border-gray-800">
-    <div class="flex items-center justify-between border-b pb-2 mb-2">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-800 font-bold text-xs"><i class="fa-brands fa-apple"></i></div>
-        <div>
-          <h4 class="font-bold text-gray-800 text-sm">Apple iPhone</h4>
-          <p class="text-[10px] text-gray-500">Premium Display & Battery</p>
-        </div>
-      </div>
-      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20iPhone%20repair%20karwana%20hai." class="request bg-green-600">
-        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
-      </a>
-    </div>
-    <div class="grid grid-cols-2 gap-2 text-xs">
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
-        <strong class="text-gray-800">₹1500 - ₹8500+</strong>
-      </div>
-      <div class="bg-slate-50 p-2 rounded border">
-        <span class="text-gray-500 text-[10px] block">High Health Battery</span>
-        <strong class="text-gray-800">₹900 - ₹3500+</strong>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- GENERAL COMMON REPAIR SERVICES -->
-<h3 class="font-bold text-xs text-gray-500 uppercase tracking-wider mt-4 mb-2">अन्य कॉमन रिपेयरिंग चार्ज</h3>
-
-<div class="service">
-<div class="service-icon bg-blue-100 text-blue-600">
-<i class="fa-solid fa-mobile-screen-button"></i>
-</div>
-<div>
-<b>Display / Screen Combo</b>
-<p class="text-[10px] text-gray-500">LCD / OLED / AMOLED Replacement</p>
-</div>
-<div class="rate">₹500+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-red-100 text-red-600">
-<i class="fa-solid fa-battery-half"></i>
-</div>
-<div>
-<b>Battery Replacement</b>
-<p class="text-[10px] text-gray-500">Battery बदलने की सुविधा</p>
-</div>
-<div class="rate">₹350+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-purple-100 text-purple-600">
-<i class="fa-solid fa-plug"></i>
-</div>
-<div>
-<b>Charging Jack / CC Board</b>
-<p class="text-[10px] text-gray-500">Charging Port Repair</p>
-</div>
-<div class="rate">₹250+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-orange-100 text-orange-600">
-<i class="fa-solid fa-volume-high"></i>
-</div>
-<div>
-<b>Speaker Repair</b>
-<p class="text-[10px] text-gray-500">Speaker / Earpiece</p>
-</div>
-<div class="rate">₹200+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-green-100 text-green-600">
-<i class="fa-solid fa-microphone"></i>
-</div>
-<div>
-<b>Mic Repair</b>
-<p class="text-[10px] text-gray-500">Microphone Problem</p>
-</div>
-<div class="rate">₹200+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-pink-100 text-pink-600">
-<i class="fa-solid fa-camera"></i>
-</div>
-<div>
-<b>Camera Repair</b>
-<p class="text-[10px] text-gray-500">Front / Back Camera</p>
-</div>
-<div class="rate">₹350+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-indigo-100 text-indigo-600">
-<i class="fa-solid fa-laptop-code"></i>
-</div>
-<div>
-<b>Software / Flashing</b>
-<p class="text-[10px] text-gray-500">Software / Update / Reset</p>
-</div>
-<div class="rate">₹200+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-gray-200 text-gray-700">
-<i class="fa-solid fa-microchip"></i>
-</div>
-<div>
-<b>IC / Motherboard Repair</b>
-<p class="text-[10px] text-gray-500">Board Level Repair</p>
-</div>
-<div class="rate">₹500+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-cyan-100 text-cyan-600">
-<i class="fa-solid fa-droplet"></i>
-</div>
-<div>
-<b>Water Damage Repair</b>
-<p class="text-[10px] text-gray-500">पानी से खराब मोबाइल</p>
-</div>
-<div class="rate">₹300+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-yellow-100 text-yellow-600">
-<i class="fa-solid fa-signal"></i>
-</div>
-<div>
-<b>Network / Signal Repair</b>
-<p class="text-[10px] text-gray-500">Network और Signal Problem</p>
-</div>
-<div class="rate">₹300+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-teal-100 text-teal-600">
-<i class="fa-solid fa-lock"></i>
-</div>
-<div>
-<b>Pattern / Software Unlock</b>
-<p class="text-[10px] text-gray-500">Supported Devices Only</p>
-</div>
-<div class="rate">₹250+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-slate-200 text-slate-700">
-<i class="fa-solid fa-wifi"></i>
-</div>
-<div>
-<b>Wi-Fi / Bluetooth Repair</b>
-<p class="text-[10px] text-gray-500">Connectivity Problem</p>
-</div>
-<div class="rate">₹300+</div>
-</div>
-
-<div class="bg-yellow-50 border border-yellow-300 rounded-xl p-3 text-center">
-<p class="text-[10px] text-yellow-800">
-⚠️ Repairing के रेट मोबाइल मॉडल और पार्ट्स के अनुसार बदल सकते हैं।
-Final price मोबाइल की जाँच के बाद बताया जाएगा।
-</p>
-</div>
-
-</section>
-
-
-<!-- ================= ACCESSORIES ================= -->
-<section id="accessories-section" class="space-y-3 hidden">
-
-<div class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 rounded-xl">
-<i class="fa-solid fa-plug text-2xl"></i>
-<h2 class="text-lg font-bold mt-1">मोबाइल Accessories</h2>
-<p class="text-xs text-purple-100">
-मोबाइल के सभी जरूरी सामान उपलब्ध
-</p>
-</div>
-
-<div class="grid grid-cols-2 gap-3">
-
-<div class="accessory">
-<div class="accessory-icon bg-blue-100 text-blue-600">
-<i class="fa-solid fa-charging-station"></i>
-</div>
-<b class="block mt-2">Fast Charger</b>
-<p class="text-[10px] text-gray-500">18W / 25W / 33W+</p>
-<strong class="text-green-600 text-sm">₹199+</strong>
-</div>
-
-<div class="accessory">
-<div class="accessory-icon bg-green-100 text-green-600">
-<i class="fa-solid fa-link"></i>
-</div>
-<b class="block mt-2">Data Cable</b>
-<p class="text-[10px] text-gray-500">Type-C / Micro USB</p>
-<strong class="text-green-600 text-sm">₹99+</strong>
-</div>
-
-<div class="accessory">
-<div class="accessory-icon bg-purple-100 text-purple-600">
-<i class="fa-solid fa-headphones"></i>
-</div>
-<b class="block mt-2">Earphones</b>
-<p class="text-[10px] text-gray-500">Wired Earphones</p>
-<strong class="text-green-600 text-sm">₹99+</strong>
-</div>
-
-<div class="accessory">
-<div class="accessory-icon bg-pink-100 text-pink-600">
-<i class="fa-solid fa-headphones-simple"></i>
-</div>
-<b class="block mt-2">Neckband</b>
-<p class="text-[10px] text-gray-500">Bluetooth Neckband</p>
-<strong class="text-green-600 text-sm">₹399+</strong>
-</div>
-
-<div class="accessory">
-<div class="accessory-icon bg-yellow-100 text-yellow-600">
-<i class="fa-solid fa-mobile-screen-button"></i>
-</div>
-<b class="block mt-2">Tempered Glass</b>
-<p class="text-[10px] text-gray-500">Screen Protection</p>
-<strong class="text-green-600 text-sm">₹50+</strong>
-</div>
-
-<div class="accessory">
-<div class="accessory-icon bg-orange-100 text-orange-600">
-<i class="fa-solid fa-mobile-screen-button"></i>
-</div>
-<b class="block mt-2">Mobile Cover</b>
-<p class="text-[10px] text-gray-500">Different Models</p>
-<strong class="text-green-600 text-sm">₹80+</strong>
-</div>
-
-<div class="accessory">
-<div class="accessory-icon bg-red-100 text-red-600">
-<i class="fa-solid fa-battery-full"></i>
-</div>
-<b class="block mt-2">Power Bank</b>
-<p class="text-[10px] text-gray-500">Portable Charging</p>
-<strong class="text-green-600 text-sm">₹699+</strong>
-</div>
-
-<div class="accessory">
-<div class="accessory-icon bg-indigo-100 text-indigo-600">
-<i class="fa-solid fa-sd-card"></i>
-</div>
-<b class="block mt-2">Memory Card</b>
-<p class="text-[10px] text-gray-500">32GB / 64GB / 128GB</p>
-<strong class="text-green-600 text-sm">₹299+</strong>
-</div>
-
-<div class="accessory">
-<div class="accessory-icon bg-cyan-100 text-cyan-600">
-<i class="fa-solid fa-volume-high"></i>
-</div>
-<b class="block mt-2">Bluetooth Speaker</b>
-<p class="text-[10px] text-gray-500">Portable Speaker</p>
-<strong class="text-green-600 text-sm">₹399+</strong>
-</div>
-
-<div class="accessory">
-<div class="accessory-icon bg-gray-200 text-gray-700">
-<i class="fa-brands fa-usb"></i>
-</div>
-<b class="block mt-2">OTG Adapter</b>
-<p class="text-[10px] text-gray-500">USB / Type-C OTG</p>
-<strong class="text-green-600 text-sm">₹99+</strong>
-</div>
-
-<div class="accessory">
-<div class="accessory-icon bg-teal-100 text-teal-600">
-<i class="fa-solid fa-sim-card"></i>
-</div>
-<b class="block mt-2">SIM Accessories</b>
-<p class="text-[10px] text-gray-500">SIM Related Items</p>
-<strong class="text-green-600 text-sm">₹20+</strong>
-</div>
-
-<div class="accessory">
-<div class="accessory-icon bg-violet-100 text-violet-600">
-<i class="fa-solid fa-clock"></i>
-</div>
-<b class="block mt-2">Smart Watch</b>
-<p class="text-[10px] text-gray-500">Smart Accessories</p>
-<strong class="text-green-600 text-sm">₹499+</strong>
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-
-<!-- BOTTOM BAR -->
-<div class="bottom">
-<div class="bottom-inner">
-
-<a href="https://wa.me/919919787169" target="_blank">
-<i class="fa-brands fa-whatsapp text-green-400"></i>
-WhatsApp
-</a>
-
-<a href="https://www.google.com/maps/search/?api=1&query=Khimsepur%2C%20Farrukhabad%2C%20Uttar%20Pradesh" target="_blank">
-<i class="fa-solid fa-location-dot text-red-400"></i>
-लोकेशन
-</a>
-
-</div>
-</div>
-
-
-<script>
-function switchTab(tab) {
-    let tabs = ["recharge", "repair", "accessories"];
-    
-    tabs.forEach(function(x) {
-        let sec = document.getElementById(x + "-section");
-        let btn = document.getElementById("tab-" + x);
+      <!-- Models List inside Combo -->
+      <div id="combo-models" class="model-list">
         
-        if (sec) sec.classList.add("hidden");
-        if (btn) {
-            btn.classList.remove("active-tab");
-            btn.classList.add("text-gray-600");
-        }
-    });
+        <div class="model-row">
+          <div>
+            <div class="model-name">Redmi 12 5G</div>
+            <div class="model-price">₹1200 - ₹1800</div>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Mujhe%20Redmi%2012%205G%20Combo%20ka%20rate%20puchna%20hai" class="wa-btn" target="_blank">💬 रेट पूछें</a>
+        </div>
 
-    let activeSec = document.getElementById(tab + "-section");
-    let activeBtn = document.getElementById("tab-" + tab);
+        <div class="model-row">
+          <div>
+            <div class="model-name">Realme C11 / C12</div>
+            <div class="model-price">₹1100 - ₹1500</div>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Mujhe%20Realme%20C11%20Combo%20ka%20rate%20puchna%20hai" class="wa-btn" target="_blank">💬 रेट पूछें</a>
+        </div>
 
-    if (activeSec) activeSec.classList.remove("hidden");
-    if (activeBtn) {
-        activeBtn.classList.add("active-tab");
-        activeBtn.classList.remove("text-gray-600");
+        <div class="model-row">
+          <div>
+            <div class="model-name">Vivo Y20 / Y20i</div>
+            <div class="model-price">₹1200 - ₹1650</div>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Mujhe%20Vivo%20Y20%20Combo%20ka%20rate%20puchna%20hai" class="wa-btn" target="_blank">💬 रेट पूछें</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Category 2: Battery Replacement -->
+    <div class="repair-card">
+      <div class="repair-header" onclick="toggleMenu('battery-models', this)">
+        <div class="repair-info">
+          <div class="repair-icon icon-battery">🔋</div>
+          <div class="repair-text">
+            <h3>Battery Replacement</h3>
+            <p>Battery बदलने की सुविधा</p>
+          </div>
+        </div>
+        <span class="arrow-icon">▼</span>
+      </div>
+
+      <!-- Models List inside Battery -->
+      <div id="battery-models" class="model-list">
+        
+        <div class="model-row">
+          <div>
+            <div class="model-name">Redmi 12 5G Battery</div>
+            <div class="model-price">₹650 - ₹950</div>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Mujhe%20Redmi%2012%205G%20Battery%20ka%20rate%20puchna%20hai" class="wa-btn" target="_blank">💬 रेट पूछें</a>
+        </div>
+
+        <div class="model-row">
+          <div>
+            <div class="model-name">Realme C11 / C12 Battery</div>
+            <div class="model-price">₹600 - ₹900</div>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Mujhe%20Realme%20C11%20Battery%20ka%20rate%20puchna%20hai" class="wa-btn" target="_blank">💬 रेट पूछें</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Category 3: Charging Jack / CC Board -->
+    <div class="repair-card">
+      <div class="repair-header" onclick="toggleMenu('charging-models', this)">
+        <div class="repair-info">
+          <div class="repair-icon icon-jack">🔌</div>
+          <div class="repair-text">
+            <h3>Charging Jack / CC Board</h3>
+            <p>Charging Port Repair</p>
+          </div>
+        </div>
+        <span class="arrow-icon">▼</span>
+      </div>
+
+      <!-- Models List inside Charging -->
+      <div id="charging-models" class="model-list">
+        
+        <div class="model-row">
+          <div>
+            <div class="model-name">Universal Charging Jack</div>
+            <div class="model-price">₹150 - ₹250</div>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Mujhe%20Charging%20Jack%20ka%20rate%20puchna%20hai" class="wa-btn" target="_blank">💬 रेट पूछें</a>
+        </div>
+
+        <div class="model-row">
+          <div>
+            <div class="model-name">Original CC Board Flex</div>
+            <div class="model-price">₹250 - ₹450</div>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Mujhe%20CC%20Board%20ka%20rate%20puchna%20hai" class="wa-btn" target="_blank">💬 रेट पूछें</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Nav -->
+  <div class="bottom-nav">
+    <a href="#" class="bottom-item">💬<br>WhatsApp</a>
+    <a href="#" class="bottom-item">📍<br>लोकेशन</a>
+  </div>
+
+  <!-- Accordion Toggle JavaScript -->
+  <script>
+    function toggleMenu(id, element) {
+      var content = document.getElementById(id);
+      var arrow = element.querySelector('.arrow-icon');
+      
+      if (content.style.display === "block") {
+        content.style.display = "none";
+        arrow.style.transform = "rotate(0deg)";
+      } else {
+        content.style.display = "block";
+        arrow.style.transform = "rotate(180deg)";
+      }
     }
-}
-
-/* BRAND FILTER FUNCTION */
-function filterBrand(brand) {
-    let cards = document.querySelectorAll('.brand-card');
-    let btns = document.querySelectorAll('.brand-btn');
-    
-    btns.forEach(b => b.classList.remove('active-brand'));
-    document.getElementById('brand-' + brand).classList.add('active-brand');
-
-    cards.forEach(card => {
-        if (brand === 'all') {
-            card.style.display = 'block';
-        } else {
-            if (card.classList.contains(brand)) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        }
-    });
-}
-
-/* LANGUAGE */
-function changeLanguage(lang){
-    if(lang==="en"){
-        document.querySelector("#tab-recharge").innerHTML=
-        '<i class="fa-solid fa-bolt text-orange-500"></i> Recharge';
-
-        document.querySelector("#tab-repair").innerHTML=
-        '<i class="fa-solid fa-screwdriver-wrench text-blue-500"></i> Repairing';
-
-        document.querySelector("#tab-accessories").innerHTML=
-        '<i class="fa-solid fa-plug text-purple-500"></i> Accessories';
-
-        document.querySelector("#recharge-section .offer h2").innerText=
-        "1% Return on Every Recharge";
-
-        document.querySelector("#recharge-section .offer p").innerHTML=
-        "After submitting Recharge Request, please Wait for up to 5 minutes.<br>1% Return will be provided after successful Recharge.";
-
-        document.querySelector("#repair-section h2").innerText=
-        "Mobile Repairing Rates";
-
-        document.querySelector("#accessories-section h2").innerText=
-        "Mobile Accessories";
-    }else{
-        document.querySelector("#tab-recharge").innerHTML=
-        '<i class="fa-solid fa-bolt text-orange-500"></i> रीचार्ज प्लान';
-
-        document.querySelector("#tab-repair").innerHTML=
-        '<i class="fa-solid fa-screwdriver-wrench text-blue-500"></i> रिपेयरिंग रेट';
-
-        document.querySelector("#tab-accessories").innerHTML=
-        '<i class="fa-solid fa-plug text-purple-500"></i> सामान / एक्सेसरीज़';
-
-        document.querySelector("#recharge-section .offer h2").innerText=
-        "हर Recharge पर 1% Return";
-
-        document.querySelector("#recharge-section .offer p").innerHTML=
-        "Recharge Request डालने के बाद 5 मिनट तक Wait करें।<br>सफल Recharge के बाद 1% Return मिलेगा।";
-
-        document.querySelector("#repair-section h2").innerText=
-        "मोबाइल रिपेयरिंग रेट";
-
-        document.querySelector("#accessories-section h2").innerText=
-        "मोबाइल Accessories";
-    }
-    localStorage.setItem("kspLanguage", lang);
-}
-
-let saved = localStorage.getItem("kspLanguage") || "hi";
-let langSelect = document.getElementById("language");
-if(langSelect) {
-    langSelect.value = saved;
-    changeLanguage(saved);
-}
-</script>
-
+  </script>
 </body>
 </html>
