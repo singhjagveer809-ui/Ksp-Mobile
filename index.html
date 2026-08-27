@@ -122,34 +122,6 @@ font-size:11px;
 font-weight:900;
 }
 
-/* SERVICE */
-.service{
-background:white;
-border-radius:12px;
-padding:11px;
-display:flex;
-align-items:center;
-gap:12px;
-box-shadow:0 2px 7px #00000012;
-}
-.service-icon{
-width:48px;
-height:48px;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:21px;
-flex-shrink:0;
-}
-.rate{
-margin-left:auto;
-font-size:14px;
-font-weight:800;
-color:#16a34a;
-white-space:nowrap;
-}
-
 /* ACCESSORY */
 .accessory{
 background:white;
@@ -750,98 +722,49 @@ Recharge करने से पहले उपलब्ध plan की पु�
 </section>
 
 
-<!-- ================= REPAIRING ================= -->
-<section id="repair-section" class="space-y-3 hidden">
+<!-- ================= REPAIRING (Maxbhi Style Brand & Models) ================= -->
+<section id="repair-section" class="space-y-4 hidden">
 
-<div class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white p-4 rounded-xl">
-<i class="fa-solid fa-screwdriver-wrench text-2xl"></i>
-<h2 class="text-lg font-bold mt-1">मोबाइल रिपेयरिंग रेट</h2>
-<p class="text-xs text-blue-100">
-सभी प्रकार के मोबाइल की रिपेयरिंग उपलब्ध
-</p>
-</div>
+    <!-- STEP 1: Select Brand -->
+    <div id="brands-container" class="space-y-4">
+        <div class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white p-4 rounded-xl text-center">
+            <i class="fa-solid fa-screwdriver-wrench text-2xl"></i>
+            <h2 class="text-lg font-bold mt-1">Mobile Repairing - Select Brand</h2>
+            <p class="text-xs text-blue-100">अपनी मोबाइल कंपनी (Brand) चुनें</p>
+        </div>
 
-<div class="service">
-<div class="service-icon bg-blue-100 text-blue-600">
-<i class="fa-solid fa-mobile-screen-button"></i>
-</div>
-<div>
-<b>Display / Screen</b>
-<p class="text-[10px] text-gray-500">LCD / OLED / AMOLED Replacement</p>
-</div>
-<div class="rate">₹500+</div>
-</div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <!-- Apple -->
+            <div onclick="showModels('Apple')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer text-center transition border border-gray-100 flex flex-col items-center justify-center">
+                <div class="h-10 flex items-center justify-center mb-1">
+                    <i class="fa-brands fa-apple text-3xl text-gray-800"></i>
+                </div>
+                <span class="font-semibold text-xs">Apple</span>
+            </div>
 
-<div class="service">
-<div class="service-icon bg-red-100 text-red-600">
-<i class="fa-solid fa-battery-half"></i>
-</div>
-<div>
-<b>Battery Replacement</b>
-<p class="text-[10px] text-gray-500">Battery बदलने की सुविधा</p>
-</div>
-<div class="rate">₹350+</div>
-</div>
+            <!-- Samsung -->
+            <div onclick="showModels('Samsung')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer text-center transition border border-gray-100 flex flex-col items-center justify-center">
+                <div class="h-10 flex items-center justify-center mb-1">
+                    <span class="font-extrabold text-base tracking-wider text-blue-900">SAMSUNG</span>
+                </div>
+                <span class="font-semibold text-xs">Samsung</span>
+            </div>
 
-<div class="service">
-<div class="service-icon bg-purple-100 text-purple-600">
-<i class="fa-solid fa-plug"></i>
-</div>
-<div>
-<b>Charging Jack</b>
-<p class="text-[10px] text-gray-500">Charging Port Repair</p>
-</div>
-<div class="rate">₹250+</div>
-</div>
+            <!-- Xiaomi / Redmi -->
+            <div onclick="showModels('Xiaomi')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer text-center transition border border-gray-100 flex flex-col items-center justify-center">
+                <div class="h-10 flex items-center justify-center mb-1">
+                    <span class="bg-orange-500 text-white px-2 py-0.5 rounded font-bold text-sm">mi</span>
+                </div>
+                <span class="font-semibold text-xs">Xiaomi / Redmi</span>
+            </div>
 
-<div class="service">
-<div class="service-icon bg-orange-100 text-orange-600">
-<i class="fa-solid fa-volume-high"></i>
-</div>
-<div>
-<b>Speaker Repair</b>
-<p class="text-[10px] text-gray-500">Speaker / Earpiece</p>
-</div>
-<div class="rate">₹200+</div>
-</div>
+            <!-- Vivo -->
+            <div onclick="showModels('Vivo')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer text-center transition border border-gray-100 flex flex-col items-center justify-center">
+                <div class="h-10 flex items-center justify-center mb-1">
+                    <span class="font-bold text-xl text-blue-600">vivo</span>
+                </div>
+                <span class="font-semibold text-xs">Vivo</span>
+            </div>
 
-<div class="service">
-<div class="service-icon bg-green-100 text-green-600">
-<i class="fa-solid fa-microphone"></i>
-</div>
-<div>
-<b>Mic Repair</b>
-<p class="text-[10px] text-gray-500">Microphone Problem</p>
-</div>
-<div class="rate">₹200+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-pink-100 text-pink-600">
-<i class="fa-solid fa-camera"></i>
-</div>
-<div>
-<b>Camera Repair</b>
-<p class="text-[10px] text-gray-500">Front / Back Camera</p>
-</div>
-<div class="rate">₹350+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-indigo-100 text-indigo-600">
-<i class="fa-solid fa-laptop-code"></i>
-</div>
-<div>
-<b>Software / Flashing</b>
-<p class="text-[10px] text-gray-500">Software / Update / Reset</p>
-</div>
-<div class="rate">₹200+</div>
-</div>
-
-<div class="service">
-<div class="service-icon bg-gray-200 text-gray-700">
-<i class="fa-solid fa-microchip"></i>
-</div>
-<div>
-<b>IC / Motherboard Repair</b>
-<p class=
+            <!-- Oppo -->
+            <div onclick="showModels('Oppo')" class="bg-white p-4 rounded-x
