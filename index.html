@@ -4,13 +4,199 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KSP MOBILE - फर्रुखाबाद</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+    }
+
+    .top-notice {
+      background: #d32f2f;
+      color: #fff;
+      padding: 8px 12px;
+      font-size: 13px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .header {
+      background: #0f172a;
+      color: #fff;
+      padding: 15px;
+    }
+
+    .shop-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .shop-icon {
+      font-size: 28px;
+    }
+
+    .header h1 {
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .location {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 3px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1e1b4b, #4338ca);
+      color: #fff;
+      text-align: center;
+      padding: 20px 15px;
+    }
+
+    .hero h2 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .hero p {
+      font-size: 12px;
+      color: #c7d2fe;
+    }
+
+    /* टैब नेविगेशन */
+    .tabs-container {
+      display: flex;
+      background: #fff;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px 5px;
+      background: #f8fafc;
+      border: none;
+      font-weight: bold;
+      font-size: 13px;
+      color: #64748b;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      text-align: center;
+    }
+
+    .tab-btn.active {
+      color: #ea580c;
+      background: #fff;
+      border-bottom-color: #ea580c;
+    }
+
+    /* कंटेंट विजिबिलिटी कंट्रोल */
+    .tab-content {
+      display: none; /* डिफ़ॉल्ट रूप से छुपा रहेगा */
+      padding: 15px;
+    }
+
+    .tab-content.active-content {
+      display: block; /* जो टैब एक्टिव होगा वो दिखेगा */
+    }
+
+    /* कार्ड डिज़ाइन */
+    .offer-card {
+      background: #dc2626;
+      color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .offer-tag {
+      background: #facc15;
+      color: #000;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .offer-card h3 {
+      margin: 8px 0;
+      font-size: 18px;
+    }
+
+    .offer-card p {
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .offer-card small {
+      font-size: 11px;
+      color: #fee2e2;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin: 15px 0 10px 0;
+      color: #0f172a;
+    }
+
+    .plan-card, .item-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .plan-details h4, .item-card h4 {
+      font-size: 15px;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .plan-details p, .item-card p {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .req-btn {
+      background: #16a34a;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #2563eb;
+      font-size: 13px;
+      white-space: nowrap;
+      background: #eff6ff;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+  </style>
 </head>
 <body>
 
   <!-- टॉप नोटिस बार -->
   <div class="top-notice">
-    ⚠️ <strong>जरूरी सूचना:</strong> Recharge Request करने से पहले अपना मोबाइल नंबर ध्यान से चेक करें।
+    ⚠️ जरूरी सूचना: Recharge Request करने से पहले अपना मोबाइल नंबर ध्यान से चेक करें।
   </div>
 
   <!-- हेडर -->
@@ -47,10 +233,11 @@
     </div>
 
     <div class="section-title">Airtel Recharge Plans</div>
+    
     <div class="plan-card">
       <div class="plan-details">
         <h4>₹199</h4>
-        <p><strong>28 Days</strong> | 2GB Total Data • Unlimited Calling • 100 SMS/Day</p>
+        <p><strong>28 Days</strong><br>2GB Total Data • Unlimited Calling • 100 SMS/Day</p>
       </div>
       <button class="req-btn">Recharge Request</button>
     </div>
@@ -58,20 +245,20 @@
     <div class="plan-card">
       <div class="plan-details">
         <h4>₹349</h4>
-        <p><strong>28 Days</strong> | 1.5GB/Day • Unlimited Calling • Eligible 5G</p>
+        <p><strong>28 Days</strong><br>1.5GB/Day • Unlimited Calling • Eligible 5G</p>
       </div>
       <button class="req-btn">Recharge Request</button>
     </div>
   </main>
 
-  <!-- 2. रिपेयरिंग रेट सेक्शन (जो नहीं खुल रहा था) -->
+  <!-- 2. रिपेयरिंग रेट सेक्शन -->
   <main id="repair-section" class="tab-content">
     <div class="section-title">🛠️ मोबाइल रिपेयरिंग रेट लिस्ट</div>
     
     <div class="item-card">
       <div>
         <h4>डिस्प्ले / फोल्डर चेंज (Folder Replacement)</h4>
-        <p>ओरिजिनल क्वालिटी फोल्डर प्रॉपर फिटिंग और टेस्टिंग के साथ</p>
+        <p>ओरिजिनल क्वालिटी प्रॉपर फिटिंग और टेस्टिंग के साथ</p>
       </div>
       <div class="price">₹1,200 से शुरू</div>
     </div>
@@ -87,7 +274,7 @@
     <div class="item-card">
       <div>
         <h4>बैटरी रिप्लेसमेंट (Battery Replacement)</h4>
-        <p>6 महीने या 1 साल की गारंटी वाली ओरिजिनल बैटरी</p>
+        <p>गारंटी वाली ओरिजिनल बैटरी</p>
       </div>
       <div class="price">₹700 - ₹1,400</div>
     </div>
@@ -102,8 +289,8 @@
 
     <div class="item-card">
       <div>
-        <h4>सॉफ्टवेयर / FRP अनलॉक (Software & FRP Unlocking)</h4>
-        <p>पैटर्न लॉक, पिन लॉक, FRP या हैंग ऑन लोगो समस्या</p>
+        <h4>सॉफ्टवेयर / FRP अनलॉक (Software & FRP)</h4>
+        <p>पैटर्न लॉक, पिन लॉक या हैंग समस्या</p>
       </div>
       <div class="price">₹200 - ₹500</div>
     </div>
@@ -115,8 +302,8 @@
     
     <div class="item-card">
       <div>
-        <h4>फास्ट चार्जर और केबल (Charger & Type-C Cable)</h4>
-        <p>18W / 33W / 67W फास्ट चार्जिंग एडेप्टर</p>
+        <h4>फास्ट चार्जर और केबल (Charger & Type-C)</h4>
+        <p>18W / 33W / 67W फास्ट एडेप्टर</p>
       </div>
       <div class="price">₹250 - ₹650</div>
     </div>
@@ -138,6 +325,29 @@
     </div>
   </main>
 
-  <script src="script.js"></script>
+  <!-- जावास्क्रिप्ट टैब स्विच करने के लिए -->
+  <script>
+    function switchTab(tabName) {
+      // सभी टैब बटन से active हटाएँ
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      // सभी सेक्शन छुपाएँ
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => content.classList.remove('active-content'));
+
+      // क्लिक किए गए टैब को दिखाएँ
+      if (tabName === 'recharge') {
+        buttons[0].classList.add('active');
+        document.getElementById('recharge-section').classList.add('active-content');
+      } else if (tabName === 'repair') {
+        buttons[1].classList.add('active');
+        document.getElementById('repair-section').classList.add('active-content');
+      } else if (tabName === 'accessories') {
+        buttons[2].classList.add('active');
+        document.getElementById('accessories-section').classList.add('active-content');
+      }
+    }
+  </script>
 </body>
 </html>
