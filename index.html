@@ -169,6 +169,24 @@ justify-content:center;
 font-size:21px;
 }
 
+/* BRAND FILTER BUTTONS */
+.brand-btn{
+background: white;
+border: 1px solid #cbd5e1;
+padding: 6px 12px;
+border-radius: 20px;
+font-size: 11px;
+font-weight: bold;
+color: #334155;
+white-space: nowrap;
+cursor: pointer;
+}
+.active-brand{
+background: #2563eb;
+color: white;
+border-color: #2563eb;
+}
+
 /* BOTTOM */
 .bottom{
 position:fixed;
@@ -757,16 +775,200 @@ Recharge करने से पहले उपलब्ध plan की पु�
 <i class="fa-solid fa-screwdriver-wrench text-2xl"></i>
 <h2 class="text-lg font-bold mt-1">मोबाइल रिपेयरिंग रेट</h2>
 <p class="text-xs text-blue-100">
-सभी प्रकार के मोबाइल की रिपेयरिंग उपलब्ध
+ब्रांड चुने और अपने मॉडल का रेट देखें
 </p>
 </div>
+
+<!-- BRAND FILTER BUTTONS WITH LOGOS -->
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+  <button onclick="filterBrand('all')" class="brand-btn active-brand" id="brand-all">
+    <i class="fa-solid fa-border-all mr-1"></i> सभी (All)
+  </button>
+  <button onclick="filterBrand('mi')" class="brand-btn" id="brand-mi">
+    <i class="fa-solid fa-mobile-screen mr-1 text-orange-500"></i> Xiaomi / Mi
+  </button>
+  <button onclick="filterBrand('vivo')" class="brand-btn" id="brand-vivo">
+    <i class="fa-solid fa-mobile-screen mr-1 text-blue-500"></i> Vivo
+  </button>
+  <button onclick="filterBrand('oppo')" class="brand-btn" id="brand-oppo">
+    <i class="fa-solid fa-mobile-screen mr-1 text-green-500"></i> Oppo
+  </button>
+  <button onclick="filterBrand('realme')" class="brand-btn" id="brand-realme">
+    <i class="fa-solid fa-mobile-screen mr-1 text-yellow-500"></i> Realme
+  </button>
+  <button onclick="filterBrand('samsung')" class="brand-btn" id="brand-samsung">
+    <i class="fa-solid fa-mobile-screen mr-1 text-blue-700"></i> Samsung
+  </button>
+  <button onclick="filterBrand('apple')" class="brand-btn" id="brand-apple">
+    <i class="fa-brands fa-apple mr-1 text-gray-800"></i> iPhone
+  </button>
+</div>
+
+<!-- BRAND DETAILED REPAIR CARDS -->
+<div class="space-y-3">
+
+  <!-- BRAND MODEL ESTIMATE CARDS -->
+  <div class="brand-card mi all bg-white p-3 rounded-xl shadow border-l-4 border-orange-500">
+    <div class="flex items-center justify-between border-b pb-2 mb-2">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold text-xs">Mi</div>
+        <div>
+          <h4 class="font-bold text-gray-800 text-sm">Xiaomi / Redmi / Poco</h4>
+          <p class="text-[10px] text-gray-500">Display, Battery & Glass</p>
+        </div>
+      </div>
+      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Mi%2FRedmi%20phone%20repair%20karwana%20hai." class="request bg-green-600">
+        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
+      </a>
+    </div>
+    <div class="grid grid-cols-2 gap-2 text-xs">
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
+        <strong class="text-gray-800">₹700 - ₹2200</strong>
+      </div>
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">Original Battery</span>
+        <strong class="text-gray-800">₹450 - ₹1200</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand-card vivo all bg-white p-3 rounded-xl shadow border-l-4 border-blue-500">
+    <div class="flex items-center justify-between border-b pb-2 mb-2">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xs">Vi</div>
+        <div>
+          <h4 class="font-bold text-gray-800 text-sm">Vivo Series (Y/V/T)</h4>
+          <p class="text-[10px] text-gray-500">Display, Battery & Glass</p>
+        </div>
+      </div>
+      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Vivo%20phone%20repair%20karwana%20hai." class="request bg-green-600">
+        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
+      </a>
+    </div>
+    <div class="grid grid-cols-2 gap-2 text-xs">
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
+        <strong class="text-gray-800">₹800 - ₹2500</strong>
+      </div>
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">Original Battery</span>
+        <strong class="text-gray-800">₹500 - ₹1300</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand-card oppo all bg-white p-3 rounded-xl shadow border-l-4 border-green-500">
+    <div class="flex items-center justify-between border-b pb-2 mb-2">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xs">Op</div>
+        <div>
+          <h4 class="font-bold text-gray-800 text-sm">Oppo Series (A/F/Reno)</h4>
+          <p class="text-[10px] text-gray-500">Display, Battery & Glass</p>
+        </div>
+      </div>
+      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Oppo%20phone%20repair%20karwana%20hai." class="request bg-green-600">
+        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
+      </a>
+    </div>
+    <div class="grid grid-cols-2 gap-2 text-xs">
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
+        <strong class="text-gray-800">₹800 - ₹2400</strong>
+      </div>
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">Original Battery</span>
+        <strong class="text-gray-800">₹500 - ₹1250</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand-card realme all bg-white p-3 rounded-xl shadow border-l-4 border-yellow-500">
+    <div class="flex items-center justify-between border-b pb-2 mb-2">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 font-bold text-xs">R</div>
+        <div>
+          <h4 class="font-bold text-gray-800 text-sm">Realme Series (C/Number/GT)</h4>
+          <p class="text-[10px] text-gray-500">Display, Battery & Glass</p>
+        </div>
+      </div>
+      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Realme%20phone%20repair%20karwana%20hai." class="request bg-green-600">
+        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
+      </a>
+    </div>
+    <div class="grid grid-cols-2 gap-2 text-xs">
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
+        <strong class="text-gray-800">₹750 - ₹2300</strong>
+      </div>
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">Original Battery</span>
+        <strong class="text-gray-800">₹450 - ₹1200</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand-card samsung all bg-white p-3 rounded-xl shadow border-l-4 border-blue-700">
+    <div class="flex items-center justify-between border-b pb-2 mb-2">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-800 font-bold text-xs">Sam</div>
+        <div>
+          <h4 class="font-bold text-gray-800 text-sm">Samsung (M/F/A/S Series)</h4>
+          <p class="text-[10px] text-gray-500">TFT / OLED / AMOLED Display</p>
+        </div>
+      </div>
+      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20Samsung%20phone%20repair%20karwana%20hai." class="request bg-green-600">
+        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
+      </a>
+    </div>
+    <div class="grid grid-cols-2 gap-2 text-xs">
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
+        <strong class="text-gray-800">₹900 - ₹4500+</strong>
+      </div>
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">Original Battery</span>
+        <strong class="text-gray-800">₹550 - ₹1500</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand-card apple all bg-white p-3 rounded-xl shadow border-l-4 border-gray-800">
+    <div class="flex items-center justify-between border-b pb-2 mb-2">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-800 font-bold text-xs"><i class="fa-brands fa-apple"></i></div>
+        <div>
+          <h4 class="font-bold text-gray-800 text-sm">Apple iPhone</h4>
+          <p class="text-[10px] text-gray-500">Premium Display & Battery</p>
+        </div>
+      </div>
+      <a href="https://wa.me/919919787169?text=Hello%20KSP%20Mobile%2C%20mujhe%20iPhone%20repair%20karwana%20hai." class="request bg-green-600">
+        <i class="fa-brands fa-whatsapp"></i> रेट पूछें
+      </a>
+    </div>
+    <div class="grid grid-cols-2 gap-2 text-xs">
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">Display/Folder</span>
+        <strong class="text-gray-800">₹1500 - ₹8500+</strong>
+      </div>
+      <div class="bg-slate-50 p-2 rounded border">
+        <span class="text-gray-500 text-[10px] block">High Health Battery</span>
+        <strong class="text-gray-800">₹900 - ₹3500+</strong>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- GENERAL COMMON REPAIR SERVICES -->
+<h3 class="font-bold text-xs text-gray-500 uppercase tracking-wider mt-4 mb-2">अन्य कॉमन रिपेयरिंग चार्ज</h3>
 
 <div class="service">
 <div class="service-icon bg-blue-100 text-blue-600">
 <i class="fa-solid fa-mobile-screen-button"></i>
 </div>
 <div>
-<b>Display / Screen</b>
+<b>Display / Screen Combo</b>
 <p class="text-[10px] text-gray-500">LCD / OLED / AMOLED Replacement</p>
 </div>
 <div class="rate">₹500+</div>
@@ -788,7 +990,7 @@ Recharge करने से पहले उपलब्ध plan की पु�
 <i class="fa-solid fa-plug"></i>
 </div>
 <div>
-<b>Charging Jack</b>
+<b>Charging Jack / CC Board</b>
 <p class="text-[10px] text-gray-500">Charging Port Repair</p>
 </div>
 <div class="rate">₹250+</div>
@@ -1072,6 +1274,27 @@ function switchTab(tab) {
         activeBtn.classList.add("active-tab");
         activeBtn.classList.remove("text-gray-600");
     }
+}
+
+/* BRAND FILTER FUNCTION */
+function filterBrand(brand) {
+    let cards = document.querySelectorAll('.brand-card');
+    let btns = document.querySelectorAll('.brand-btn');
+    
+    btns.forEach(b => b.classList.remove('active-brand'));
+    document.getElementById('brand-' + brand).classList.add('active-brand');
+
+    cards.forEach(card => {
+        if (brand === 'all') {
+            card.style.display = 'block';
+        } else {
+            if (card.classList.contains(brand)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        }
+    });
 }
 
 /* LANGUAGE */
